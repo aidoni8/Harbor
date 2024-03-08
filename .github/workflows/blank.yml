@@ -57,3 +57,5 @@ jobs:
       run: |
          helm repo add harbor https://helm.goharbor.io
          helm upgrade my-harbor harbor/harbor -f values.yaml -f values-dev.yaml -n harbor
+         kubectl apply -f ingress.yaml
+     
