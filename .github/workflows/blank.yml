@@ -32,7 +32,7 @@ jobs:
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
     # - name: Create Namespace
-    #   run: kubectl create ns test
+    #   run: kubectl create ns harbor
 
     - name: Install Helm
       run: |
@@ -56,6 +56,7 @@ jobs:
     - name: Deploy Helm Chart
       run: |
          helm repo add harbor https://helm.goharbor.io
-         helm upgrade my-harbor harbor/harbor -f values.yaml -f values-dev.yaml -n harbor
-         kubectl apply -f ingress.yaml
+         helm install my-harbor harbor/harbor --version 1.14.0 -n harbor
+         # helm upgrade my-harbor harbor/harbor -f values.yaml -f values-dev.yaml -n harbor
+         # kubectl apply -f ingress.yaml
      
